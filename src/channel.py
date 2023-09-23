@@ -58,10 +58,10 @@ class Channel:
         return int(self.subscribes) - int(other.subscribes)
 
     def __lt__(self, other):
-        """hw-3 метод для опирации сравнения (меньше)"""
+        """hw-3 метод для операции сравнения (меньше)"""
         return self.subscribes < other.subscribes
 
     def __le__(self, other):
-        """hw-3 метод для опирации сравнения (меньше или равно)"""
+        """hw-3 метод для операции сравнения (меньше или равно)"""
         return self.subscribes <= other.subscribes
 
