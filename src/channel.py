@@ -44,3 +44,24 @@ class Channel:
         path = '../src/'+json_file
         with open(path, 'w'):
             json.dumps(data, indent=4)
+
+    def __str__(self):
+        """homework-3 реализован магический метод __str__ выдающий """
+        return f'{self.title} ({self.url})'
+
+    def __add__(self, other):
+        """ homework-3 метод по суммированию экземпляров класса (по подписчикам)"""
+        return int(self.subscribes) + int(other.subscribes)
+
+    def __sub__(self, other):
+        """ homework-3 метод для вычитания подписчиков"""
+        return int(self.subscribes) - int(other.subscribes)
+
+    def __lt__(self, other):
+        """hw-3 метод для опирации сравнения (меньше)"""
+        return self.subscribes < other.subscribes
+
+    def __le__(self, other):
+        """hw-3 метод для опирации сравнения (меньше или равно)"""
+        return self.subscribes <= other.subscribes
+
