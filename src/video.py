@@ -14,19 +14,15 @@ class Video():
         self.channel = Video.youtube.videos().list(id=self.video_id, part='snippet, statistics').execute()
 
         try:
-            if len(self.channel['items']) == 0:         # блок try\except работает по количеству полученых ['items']
-                self.title = None
-                self.url = None
-                self.count_watches = None
-                self.like_count = None
-                raise FileNotFoundError
-            else:
-                self.title = self.channel['items'][0]['snippet']['title']
-                self.url = 'https://www.youtube.com/' + self.channel['items'][0]['id']
-                self.count_watches = self.channel['items'][0]['statistics']['viewCount']
-                self.like_count = self.channel['items'][0]['statistics']['likeCount']
-        except FileNotFoundError:
-            print('Видео с таким id не существует')
+            self.title = self.channel['items'][0]['snippet']['title']
+            self.url = 'https://www.youtube.com/' + self.channel['items'][0]['id']
+            self.count_watches = self.channel['items'][0]['statistics']['viewCount']
+            self.like_count = self.channel['items'][0]['statistics']['likeCount']
+        except IndexError:
+            self.title = None
+            self.url = None
+            self.view_count = None
+            self.like_count = None
 
     def __str__(self):
         return self.title
